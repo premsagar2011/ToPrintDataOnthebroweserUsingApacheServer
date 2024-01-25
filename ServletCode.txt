@@ -1,0 +1,45 @@
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/MyFirstServletlogin")
+public class MyFirstServlet extends HttpServlet 
+{
+	private static final long serialVersionUID = 1L;
+       
+
+    public MyFirstServlet() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		String user=request.getParameter("user");
+		String pass=request.getParameter("Password");
+		String gender =request.getParameter("gender");
+		String city=request.getParameter("city");
+		String [] course=request.getParameterValues("course");
+		pw.print( "<b>UserName:<b>"+"<b>"+user+"<b>" +"<br>"+"<br>");
+		pw.print("<b>password:<b>"+pass+"<br>"+"<br>");
+		pw.print("<b>Gender = <b>"+gender+"<br>"+"<br>");
+		pw.print("<b>city = <b>"+city+"<br>"+"<br>");
+		String course1=Arrays.toString(course);
+		pw.print("<b>course = <b>"+course1);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		doGet(request, response);
+	}
+
+}
